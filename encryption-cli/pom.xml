@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.zalando</groupId>
+        <groupId>com.qualifast</groupId>
         <artifactId>spring-cloud-config-aws-kms-parent</artifactId>
-        <version>5.2-SNAPSHOT</version>
+        <version>5.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>spring-cloud-config-aws-kms-encryption-cli</artifactId>
@@ -14,7 +14,7 @@
     <properties>
         <maven.install.skip>true</maven.install.skip>
         <maven.deploy.skip>true</maven.deploy.skip>
-        <aws-java-sdk.version>[1.11.774,)</aws-java-sdk.version>
+        <aws-java-sdk.version>[1.11.1000,)</aws-java-sdk.version>
     </properties>
 
     <dependencyManagement>
@@ -44,13 +44,14 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.zalando</groupId>
+            <groupId>com.qualifast</groupId>
             <artifactId>spring-cloud-config-aws-kms</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
+            <version>30.1.1-jre</version>
         </dependency>
     </dependencies>
 

@@ -11,6 +11,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.nio.ByteBuffer;
 
+import static com.amazonaws.services.kms.model.EncryptionAlgorithmSpec.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.atLeastOnce;
 import static org.mockito.Mockito.verify;
@@ -34,11 +35,11 @@ public class KmsEncryptionTest {
 
     @Test
     public void testPropertyHasBeenDecrypted() {
-
         assertThat(decryptedSecret).isEqualTo(MockAwsKmsConfig.PLAINTEXT);
 
         final DecryptRequest decryptRequest = new DecryptRequest();
         decryptRequest.setCiphertextBlob(CIPHER_TEXT_BLOB);
+        decryptRequest.setEncryptionAlgorithm(SYMMETRIC_DEFAULT.toString());
         verify(mockKms, atLeastOnce()).decrypt(decryptRequest);
     }
 }

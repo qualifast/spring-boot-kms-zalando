@@ -4,7 +4,7 @@ import com.amazonaws.services.kms.AWSKMS;
 import com.amazonaws.services.kms.model.DecryptRequest;
 import com.amazonaws.services.kms.model.DecryptResult;
 import org.mockito.stubbing.Answer;
-import org.springframework.boot.autoconfigure.AutoConfigureBefore;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +16,6 @@ import static org.mockito.Mockito.mock;
 
 @Configuration
 @ConditionalOnProperty(prefix = "aws.kms", name = "useMock", havingValue = "true")
-@AutoConfigureBefore(KmsEncryptionConfiguration.class)
 public class MockAwsKmsConfig {
 
     public static final String PLAINTEXT = "Hello World";
@@ -31,7 +30,8 @@ public class MockAwsKmsConfig {
     };
 
     @Bean
-    AWSKMS kms() {
+    @ConditionalOnMissingBean(AWSKMS.class)
+    public AWSKMS kms() {
         return mock(AWSKMS.class, defaultAnswer);
     }
 }

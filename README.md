@@ -41,7 +41,7 @@ Add our dependency to your pom.xml (or Gradle build file).
 
     ...
     <dependency>
-        <groupId>org.zalando</groupId>
+        <groupId>com.qualifast</groupId>
         <artifactId>spring-cloud-config-aws-kms</artifactId>
         <version>${spring-cloud-aws-kms.version}</version>
     </dependency>

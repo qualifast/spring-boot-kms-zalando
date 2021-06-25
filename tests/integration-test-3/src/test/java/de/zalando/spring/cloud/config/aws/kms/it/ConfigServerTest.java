@@ -19,6 +19,7 @@ import java.net.URI;
 import java.nio.ByteBuffer;
 import java.util.Base64;
 
+import static com.amazonaws.services.kms.model.EncryptionAlgorithmSpec.SYMMETRIC_DEFAULT;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -56,7 +57,8 @@ public class ConfigServerTest {
                 .containsExactly("Hello World");
 
         final DecryptRequest expectedRequest = new DecryptRequest()
-                .withCiphertextBlob(ByteBuffer.wrap(Base64.getDecoder().decode("c2VjcmV0".getBytes())));
+                .withCiphertextBlob(ByteBuffer.wrap(Base64.getDecoder().decode("c2VjcmV0".getBytes())))
+                .withEncryptionAlgorithm(SYMMETRIC_DEFAULT.toString());
         verify(mockKms, atLeastOnce()).decrypt(eq(expectedRequest));
     }
 
