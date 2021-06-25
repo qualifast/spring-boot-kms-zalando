@@ -61,9 +61,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/zalando/spring-cloud-config-aws-kms.git</connection>
-        <developerConnection>scm:git:git@github.com:zalando/spring-cloud-config-aws-kms.git</developerConnection>
-        <url>https://github.com/zalando/spring-cloud-config-aws-kms</url>
+        <connection>scm:git:https://github.com/qualifast/spring-boot-kms-zalando.git</connection>
+        <developerConnection>scm:git:git@github.com:qualifast/spring-boot-kms-zalando.git</developerConnection>
+        <url>https://github.com/qualifast/spring-boot-kms-zalando.git</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -138,6 +138,15 @@
                 <version>${maven-deploy-plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <skip>true</skip>
+                    <skipDeploy>true</skipDeploy>
                 </configuration>
             </plugin>
         </plugins>

@@ -102,12 +102,12 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>ossrh</id>
+            <id>qualifast-nexus</id>
             <name>Sonatype Nexus Snapshots</name>
             <url>https://tools.qualifast.bg/nexus/repository/qualifast/</url>
         </snapshotRepository>
         <repository>
-            <id>ossrh</id>
+            <id>qualifast-nexus</id>
             <name>Nexus Release Repository</name>
             <url>https://tools.qualifast.bg/nexus/repository/qualifast/</url>
         </repository>
@@ -144,10 +144,11 @@
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>${nexus-staging-maven-plugin.version}</version>
                 <configuration>
-                    <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <serverId>qualifast-nexus</serverId>
+                    <nexusUrl>https://tools.qualifast.bg/nexus/</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     <autoDropAfterRelease>true</autoDropAfterRelease>
+                    <skipStaging>true</skipStaging>
                 </configuration>
                 <executions>
                     <execution>
