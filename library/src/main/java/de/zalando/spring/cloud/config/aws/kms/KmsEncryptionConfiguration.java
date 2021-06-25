@@ -36,6 +36,7 @@ class KmsEncryptionConfiguration {
     }
 
     @Configuration
+    @ConditionalOnProperty(prefix = "aws.kms", name = "enabled", havingValue = "true", matchIfMissing = true)
     static class KmsTextEncryptorConfiguration {
 
         private final KmsProperties properties;
@@ -52,30 +53,32 @@ class KmsEncryptionConfiguration {
         KmsTextEncryptor kmsTextEncryptor() {
             return new KmsTextEncryptor(kms, properties.getKeyId(), properties.getEncryptionAlgorithm());
         }
-    }
 
-    @Configuration
-    @ConditionalOnMissingBean(AWSKMS.class)
-    static class KmsConfiguration {
+        @Configuration
+        @ConditionalOnMissingBean(AWSKMS.class)
+        static class KmsConfiguration {
 
-        private final KmsProperties properties;
+            private final KmsProperties properties;
 
-        @Autowired
-        public KmsConfiguration(KmsProperties properties) {
-            this.properties = properties;
-        }
-
-        @Bean
-        public AWSKMS kms() {
-            final AWSKMSClientBuilder builder = AWSKMSClient.builder();
-
-            if (Optional.ofNullable(properties.getEndpoint()).isPresent()) {
-                builder.withEndpointConfiguration(new EndpointConfiguration(properties.getEndpoint().getServiceEndpoint(), properties.getEndpoint().getSigningRegion()));
-            } else {
-                Optional.ofNullable(properties.getRegion()).ifPresent(builder::setRegion);
+            @Autowired
+            public KmsConfiguration(KmsProperties properties) {
+                this.properties = properties;
             }
 
-            return builder.build();
+            @Bean
+            public AWSKMS kms() {
+                final AWSKMSClientBuilder builder = AWSKMSClient.builder();
+
+                if (Optional.ofNullable(properties.getEndpoint()).isPresent()) {
+                    builder.withEndpointConfiguration(new EndpointConfiguration(properties.getEndpoint().getServiceEndpoint(),
+                            properties.getEndpoint().getSigningRegion()));
+                } else {
+                    Optional.ofNullable(properties.getRegion()).ifPresent(builder::setRegion);
+                }
+
+                return builder.build();
+            }
+
         }
 
     }

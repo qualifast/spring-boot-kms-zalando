@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Hoxton.SR4</version>
+        <version>2020.0.3</version>
         <relativePath />
     </parent>
 
-    <groupId>org.zalando</groupId>
+    <groupId>com.qualifast</groupId>
     <artifactId>spring-cloud-config-aws-kms-parent</artifactId>
-    <version>5.2-SNAPSHOT</version>
+    <version>5.3-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -82,7 +82,7 @@
         <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
-        <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     </properties>
 
     <build>
@@ -99,6 +99,9 @@
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${jacoco-maven-plugin.version}</version>
+                    <configuration>
+                        <includes>de/zalando/*</includes>
+                    </configuration>
                     <executions>
                         <!-- set arg line property for surefire -->
                         <execution>
