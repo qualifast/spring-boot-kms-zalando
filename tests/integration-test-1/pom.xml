@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.qualifast</groupId>
         <artifactId>spring-cloud-config-aws-kms-tests</artifactId>
-        <version>5.2</version>
+        <version>5.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>spring-cloud-config-aws-kms-integration-test-1</artifactId>
