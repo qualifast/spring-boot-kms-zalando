@@ -11,7 +11,7 @@
 
     <groupId>com.qualifast</groupId>
     <artifactId>spring-cloud-config-aws-kms-parent</artifactId>
-    <version>5.4-SNAPSHOT</version>
+    <version>5.2-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
@@ -24,12 +24,12 @@
 
     <name>Spring Cloud Config AWS KMS Parent</name>
     <description>Spring Cloud Config add-on that provides encryption via AWS KMS</description>
-    <url>http://github.com/zalando/spring-cloud-config-aws-kms</url>
+    <url>https://github.com/qualifast/spring-boot-kms-zalando.git</url>
     <inceptionYear>2015</inceptionYear>
 
     <organization>
-        <name>Zalando SE</name>
-        <url>http://tech.zalando.com</url>
+        <name>Qualifast</name>
+        <url>https://qualifast.com</url>
     </organization>
 
     <licenses>

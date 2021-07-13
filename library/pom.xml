@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.qualifast</groupId>
         <artifactId>spring-cloud-config-aws-kms-parent</artifactId>
-        <version>5.4-SNAPSHOT</version>
+        <version>5.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>spring-cloud-config-aws-kms</artifactId>
@@ -102,14 +102,14 @@
 
     <distributionManagement>
         <snapshotRepository>
-            <id>qualifast-nexus</id>
+            <id>ossrh</id>
             <name>Sonatype Nexus Snapshots</name>
-            <url>https://tools.qualifast.bg/nexus/repository/qualifast/</url>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
-            <id>qualifast-nexus</id>
+            <id>ossrh</id>
             <name>Nexus Release Repository</name>
-            <url>https://tools.qualifast.bg/nexus/repository/qualifast/</url>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
 
@@ -144,11 +144,10 @@
                 <artifactId>nexus-staging-maven-plugin</artifactId>
                 <version>${nexus-staging-maven-plugin.version}</version>
                 <configuration>
-                    <serverId>qualifast-nexus</serverId>
-                    <nexusUrl>https://tools.qualifast.bg/nexus/</nexusUrl>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org</nexusUrl>
                     <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     <autoDropAfterRelease>true</autoDropAfterRelease>
-                    <skipStaging>true</skipStaging>
                 </configuration>
                 <executions>
                     <execution>
